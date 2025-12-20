@@ -15,7 +15,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
-    server: ServerConfig
+    server: ServerConfig = ServerConfig()
 
 
 settings = Settings()  # type: ignore
