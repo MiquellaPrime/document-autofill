@@ -10,3 +10,15 @@ dev = [
     "pre-commit>=4.5.1",
     "ruff>=0.14.10",
 ]
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+target-version = "py313"
+
+[tool.ruff.lint]
+select = ["E", "F", "UP", "I", "SIM", "B"]
+
+[tool.ruff.format]
+quote-style = "double"
+indent-style = "space"
