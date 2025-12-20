@@ -1,4 +1,10 @@
+from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
+
+
+class ServerConfig(BaseModel):
+    host: str = "0.0.0.0"
+    port: int = 8000
 
 
 class Settings(BaseSettings):
@@ -9,5 +15,7 @@ class Settings(BaseSettings):
         extra="ignore",
     )
 
+    server: ServerConfig
 
-settings = Settings()
+
+settings = Settings()  # type: ignore
