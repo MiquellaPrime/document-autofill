@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>document-autofill</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', path='css/main.css') }}">
+</head>
+
+<body>
+<header>
+    <h1>document-autofill</h1>
+    <p>Заповнення реквізитів + підстановка в шаблон + превʼю договору.</p>
+</header>
+
+<main>
+    <!-- Ліва панель: інпути + шаблон -->
+    <section class="card" aria-label="Параметри договору">
+        <div class="card__header">
+            <h2 class="card__title">Параметри</h2>
+            <span class="card__hint">Виконавець / Замовник</span>
+        </div>
+
+        <div class="card__body">
+            <form>
+                <div class="field">
+                    <label for="executor_edrpou">ЄДРПОУ виконавця</label>
+                    <input
+                            id="executor_edrpou"
+                            name="executor_edrpou"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            placeholder="наприклад: 12345678"
+                    />
+                </div>
+
+                <div class="field">
+                    <label for="customer_edrpou">ЄДРПОУ замовника</label>
+                    <input
+                            id="customer_edrpou"
+                            name="customer_edrpou"
+                            type="text"
+                            inputmode="numeric"
+                            autocomplete="off"
+                            placeholder="наприклад: 87654321"
+                    />
+                </div>
+
+                <div class="grid-2" role="group" aria-label="Дати дії договору">
+                    <div class="field">
+                        <label for="contract_start">Дата початку дії</label>
+                        <input id="contract_start" name="contract_start" type="date"/>
+                    </div>
+
+                    <div class="field">
+                        <label for="contract_end">Дата закінчення дії</label>
+                        <input id="contract_end" name="contract_end" type="date"/>
+                    </div>
+                </div>
+
+                <div class="dropzone" aria-label="Додавання шаблону договору">
+                    <div class="dropzone__top">
+                        <div>
+                            <div class="dropzone__title">Шаблон договору</div>
+                            <p class="dropzone__desc">Завантаж .docx / .txt або встав текст нижче.</p>
+                        </div>
+                        <button class="btn" type="button">
+                            Додати файл
+                        </button>
+                    </div>
+
+                    <div class="field" style="margin: 0;">
+                        <label for="template_file" class="sr-only" style="position:absolute;left:-9999px;">
+                            Файл шаблону
+                        </label>
+                        <input id="template_file" name="template_file" type="file" accept=".docx,.txt"/>
+                    </div>
+
+                    <div class="field" style="margin: 0;">
+                        <label for="template_text">Або встав шаблон (текст)</label>
+                        <textarea
+                                id="template_text"
+                                name="template_text"
+                                placeholder="Встав сюди текст шаблону. Приклад: &#10;ДОГОВІР № {{ contract_number }} від {{ contract_date }}..."
+                        ></textarea>
+                    </div>
+
+                    <div class="footer-actions">
+                        <button class="btn" type="button">Згенерувати превʼю</button>
+                        <button class="btn" type="button">Завантажити результат</button>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Права панель: превʼю -->
+    <section class="card preview" aria-label="Превʼю договору">
+        <div class="card__header">
+            <h2 class="card__title">Превʼю договору</h2>
+            <span class="card__hint">рендер документа</span>
+        </div>
+
+        <div class="preview__frame">
+            <div class="preview__paper" role="document" aria-label="Область превʼю">
+                <div class="preview__placeholder">
+                    Тут буде превʼю договору після підстановки даних.<br/>
+                    Можеш показувати або HTML-рендер, або PDF/Docx-превʼю (залежно від реалізації).
+                </div>
+            </div>
+        </div>
+    </section>
+</main>
+</body>
+</html>
