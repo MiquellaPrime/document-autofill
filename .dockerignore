@@ -1,0 +1,29 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[codz]
+*$py.class
+
+# Environments
+.venv/
+.env
+.env.example
+
+# PyCharm
+.idea/
+
+# Ruff stuff
+.ruff_cache/
+
+# Git
+.git/
+.gitignore
+.gitattributes
+.pre-commit-config.yaml
+
+# Docker
+.dockerignore
+Dockerfile
+compose.yaml
+
+# macOS
+.DS_Store
