@@ -32,6 +32,10 @@ COPY --from=builder --chown=nonroot:nonroot /app /app
 
 ENV PATH="/app/.venv/bin:$PATH"
 
+RUN chmod +x prestart.sh
+
+ENTRYPOINT [ "./prestart.sh" ]
+
 USER nonroot
 
 CMD ["uvicorn", "src.main:app", "--host", "0.0.0.0", "--port", "8000"]
